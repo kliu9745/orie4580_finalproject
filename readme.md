@@ -89,7 +89,7 @@ Each simulation function returns:
 The script automatically prints summary statistics and generates CDF plots for
 TTFT and TBT.
 
-#1. FCFS Strategy (No Batching)
+# 1. FCFS Strategy (No Batching)
 Use simulation_priorize_decode to model a system where every job is processed immediately upon arrival (sequentially).
 
 ## Run simulation with no batching
@@ -103,7 +103,7 @@ print(f"Mean TTFT: {results['ttft'].mean():.4f}s")
 
 from llm_sim import simulation_priorize_prefill
 
-#2. Batching Strategy
+# 2. Batching Strategy
 Use simulation_priorize_prefill to model a system that groups incoming requests into batches before processing.
 
 ## Run simulation with a batch limit of 128 tokens
