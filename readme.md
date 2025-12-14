@@ -72,12 +72,46 @@ This will execute both simulation functions and display results including:
 - **TBT (Time Between Tokens)**: Average time between consecutive output tokens
 - **Utilization**: Fraction of time the GPU is busy processing requests
 
-## Output
 
+
+## Output
 Each simulation function returns:
 
 - `results`: A pandas DataFrame with per-job metrics
+  - arrival: Time the job entered the system.
+  - ttft: Time To First Token. The latency from arrival until the first token is generated.
+  - completion: Total time until the job is fully finished.
+  - prefill_service: Time spent processing the prompt.
+  - decode_service: Time spent generating new tokens.
+
 - `per_token_tbt`: List of individual token generation times for TBT analysis
 
 The script automatically prints summary statistics and generates CDF plots for
 TTFT and TBT.
+
+1. FCFS Strategy (No Batching)
+Use simulation_priorize_decode to model a system where every job is processed immediately upon arrival (sequentially).
+
+# Run simulation with no batching
+results, tbt_data = simulation_priorize_decode(
+    SIM_TIME=200, 
+    LAMBDA=15
+)
+
+print(f"Mean TTFT: {results['ttft'].mean():.4f}s")
+
+
+from llm_sim import simulation_priorize_prefill
+
+2. Batching Strategy
+Use simulation_priorize_prefill to model a system that groups incoming requests into batches before processing.
+
+# Run simulation with a batch limit of 128 tokens
+results, tbt_data = simulation_priorize_prefill(
+    SIM_TIME=200, 
+    LAMBDA=15, 
+    K=128
+)
+
+print(f"Mean TTFT: {results['ttft'].mean():.4f}s")
+
