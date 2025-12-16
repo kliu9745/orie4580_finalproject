@@ -2,6 +2,16 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+rng = np.random.default_rng(12345)
+
+def service_time_batch(token_count, a, c, b0):
+    """
+    Batch service time S(b) = c + a * max(0, b - b0)
+    token_count is total tokens in the batch.
+    """
+    A = rng.exponential(a, size = 1)[0]
+    return c + A * max(0, token_count - b0)
+
 def simulation_chunked_prefill(
     SIM_TIME=200,
     LAMBDA=15,
