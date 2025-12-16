@@ -1,3 +1,7 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
 def simulation_chunked_prefill(
     SIM_TIME=200,
     LAMBDA=15,
