@@ -125,7 +125,7 @@ throughput and user-facing latency metrics.
 
 ## How to Run
 
-From the directory containing the scripts, run:
+From the directory batching_experiments, run:
 ```bash
 python batching_impact_experiment_runner.py
 ```
@@ -164,7 +164,7 @@ This directory contains the workload sensitivity experiment for the single-GPU L
 
 ## How to Run
 
-From the project root (or the directory containing the script), run:
+From the project root, run:
 ```bash
 python workload_sensitivity_experiment.py
 ```
