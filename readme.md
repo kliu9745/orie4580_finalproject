@@ -158,6 +158,58 @@ Open `batching_impact_experiment_runner.py` and edit:
 
 ----
 
+## Chunked Prefill Experiment
+
+This directory contains the chunked-prefill experiment for a single-GPU LLM-serving simulator.
+We study how splitting prompt prefill into smaller chunks affects latency, throughput,
+and decode stalls.
+
+## How to Run
+
+From the project root, run:
+```bash
+python chunked_prefill_experiment.py
+```
+
+## Outputs
+
+Running the script generates the following plots:
+
+- Mean TTFT vs chunk size
+- Throughput vs chunk size
+- Total decode stall time vs chunk size
+
+The script also prints a summary table containing, for each chunk size:
+
+- Throughput
+- GPU utilization
+- Mean and P95 TTFT
+- Mean and P95 completion latency
+- Mean and P95 TBT
+- Total decode stall time
+
+## Key Parameters
+
+The following parameters can be modified directly in the script:
+
+Simulation parameters:
+- `SIM_TIME` — total simulation horizon
+- `LAMBDA` — arrival rate (queries/sec)
+- `prompt_lengths` — prompt tokens per request
+- `B` — output tokens per request
+
+Chunked-prefill parameters:
+- `chunk_size` — maximum prefill tokens taken from one query per iteration
+- `K` — total token budget per GPU iteration
+- `chunk_sizes` — list of chunk sizes swept in the experiment
+
+Service model parameters:
+- `c` — per-batch setup cost
+- `a` — per-token marginal cost
+- `b0` — token threshold
+
+----
+
 ## Workload Sensitivity Experiment
 
 This directory contains the workload sensitivity experiment for the single-GPU LLM-serving simulator.
