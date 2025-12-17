@@ -117,6 +117,47 @@ print(f"Mean TTFT: {results['ttft'].mean():.4f}s")
 
 ----
 
+## Impact of Batching Experiment
+
+This directory contains a batching experiment for a single-GPU LLM-serving simulator.  
+We compare fixed-size batching against dynamic batching and evaluate their impact on
+throughput and user-facing latency metrics.
+
+## How to Run
+
+From the directory containing the scripts, run:
+```bash
+python batching_impact_experiment_runner.py
+```
+
+## Outputs
+
+Running the script generates the following plots:
+
+- Completion latency distributions across fixed batch sizes
+- P95 completion latency vs batch size
+- P95 TTFT vs batch size
+- Throughput vs batch size
+- TBT (time between tokens) distributions
+- Fixed batching vs dynamic batching comparison plots
+
+## Key parameters to tweak
+
+Open `batching_impact_experiment_runner.py` and edit:
+
+- `SIM_TIME`: simulation horizon
+- `LAMBDA`: arrival rate (load)
+- `B`: output tokens per request
+- Service model: `c` (setup cost), `a` (per-token time scale), `b0` (threshold)
+- Fixed batching list: `B_LIST`
+- Timeouts / guards:
+  - `FIXED_TIMEOUT_S`
+  - dynamic `latency_target_s`
+- Warm-up trimming:
+  - `WARMUP_COMPLETED`
+
+----
+
 ## Workload Sensitivity Experiment
 
 This directory contains the workload sensitivity experiment for the single-GPU LLM-serving simulator.
@@ -133,15 +174,8 @@ python workload_sensitivity_experiment.py
 Running the script generates the following plots:
 
 - TTFT vs arrival rate
-- Completion latency vs arrival rate
-- Throughput vs arrival rate
-
 - TTFT vs prompt length
-- Completion latency vs prompt length
-
-- TBT (time between tokens) distributions vs output length
-- Completion latency vs output length
-- Throughput vs output length
+- TBT distributions vs output length
 
 ## Key Parameters
 
