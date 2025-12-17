@@ -115,3 +115,41 @@ results, tbt_data = simulation_priorize_prefill(
 
 print(f"Mean TTFT: {results['ttft'].mean():.4f}s")
 
+----
+
+## Workload Sensitivity Experiment
+
+This directory contains the workload sensitivity experiment for the single-GPU LLM-serving simulator.
+
+## How to Run
+
+From the project root (or the directory containing the script), run:
+```bash
+python workload_sensitivity_experiment.py
+```
+
+## Outputs
+
+Running the script generates the following plots:
+
+- TTFT vs arrival rate
+- Completion latency vs arrival rate
+- Throughput vs arrival rate
+
+- TTFT vs prompt length
+- Completion latency vs prompt length
+
+- TBT (time between tokens) distributions vs output length
+- Completion latency vs output length
+- Throughput vs output length
+
+## Key Parameters
+
+The following parameters can be modified directly in  
+`workload_sensitivity_experiment.py`:
+
+- `SIM_TIME` — total simulation horizon
+- `WARMUP_COMPLETED` — number of completed requests discarded as warm-up
+- `LAMBDA_LIST` — arrival rate values to sweep
+- `PROMPT_LENGTH_LIST` — prompt length values to sweep
+- `OUTPUT_LENGTH_LIST` — output length values to sweep
