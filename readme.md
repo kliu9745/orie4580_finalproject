@@ -42,8 +42,8 @@ python simulation.py
 
 This will execute both simulation functions and display CDF plots for TTFT and TBT distributions. 
 You will see a series of windows open. Once you see one plot, exit out of the window and that will lead
-you to the next plot. There are 4 plots in total. The first two are the TTFT and TBT of Prefill-Priority, 
-and the last two are the TTFT and TBT for Decode-Priority (Batching)
+you to the next plot. There are 4 plots in total. The first two are the TTFT and TBT of FCFS, 
+and the last two are the TTFT and TBT for Prefill-Priority with Batching.
 
 ## Simulation Parameters
 
