@@ -42,7 +42,7 @@ python simulation.py
 
 This will execute both simulation functions and display CDF plots for TTFT and TBT distributions. 
 You will see a series of windows open. Once you see one plot, exit out of the window and that will lead
-you to the next plot. There are 4 plots in total. The first two are the TTFT and TBT of FCFS, 
+you to the next plot. There are 4 plots in total. The first two are the TTFT and TBT for FCFS, 
 and the last two are the TTFT and TBT for Prefill-Priority with Batching.
 
 ## Simulation Parameters
@@ -88,11 +88,7 @@ results, tbt_data = simulation_priorize_decode(
     SIM_TIME=200, 
     LAMBDA=15
 )
-
 print(f"Mean TTFT: {results['ttft'].mean():.4f}s")
-
-
-from llm_sim import simulation_priorize_prefill
 
 # 2. Batching Strategy
 Use simulation_priorize_prefill to model a system that groups incoming requests into batches before processing.
@@ -103,7 +99,6 @@ results, tbt_data = simulation_priorize_prefill(
     LAMBDA=15, 
     K=128
 )
-
 print(f"Mean TTFT: {results['ttft'].mean():.4f}s")
 
 ----
