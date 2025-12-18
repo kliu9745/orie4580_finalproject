@@ -40,13 +40,10 @@ To run the simulation with default parameters:
 python simulation.py
 ```
 
-This will execute both simulation functions and display results including:
-
-- Mean and 95th percentile TTFT (Time To First Token)
-- Mean and 95th percentile completion times
-- Mean and 95th percentile TBT (Time Between Tokens)
-- GPU utilization
-- CDF plots for TTFT and TBT distributions
+This will execute both simulation functions and display CDF plots for TTFT and TBT distributions. 
+You will see a series of windows open. Once you see one plot, exit out of the window and that will lead
+you to the next plot. There are 4 plots in total. The first two are the TTFT and TBT of Prefill-Priority, 
+and the last two are the TTFT and TBT for Decode-Priority (Batching)
 
 ## Simulation Parameters
 
@@ -60,7 +57,6 @@ This will execute both simulation functions and display results including:
 - `b0`: Token threshold for service model (default: 64)
 
 ### Prefill Batching Specific
-
 - `K`: Maximum tokens per prefill batch (default: 128)
 
 ## Key Metrics
