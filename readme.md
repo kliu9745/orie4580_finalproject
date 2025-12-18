@@ -63,12 +63,7 @@ and the last two are the TTFT and TBT for Decode-Priority (Batching)
 
 - **TTFT (Time To First Token)**: Time from query arrival until the first output
   token is generated
-- **Completion Time**: Total time from arrival to completion of all output
-  tokens
 - **TBT (Time Between Tokens)**: Average time between consecutive output tokens
-- **Utilization**: Fraction of time the GPU is busy processing requests
-
-
 
 ## Output
 Each simulation function returns:
